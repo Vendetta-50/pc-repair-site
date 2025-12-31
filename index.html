@@ -82,16 +82,32 @@
     <h2 class="text-3xl font-bold mb-6">Вызвать мастера</h2>
 
     <form id="orderForm" class="space-y-4">
-      <input name="name" class="w-full p-3 rounded bg-slate-800" placeholder="Имя" required>
-      <input name="phone" class="w-full p-3 rounded bg-slate-800" placeholder="Телефон" required>
-      <input name="phone" class="w-full p-3 rounded bg-slate-800" placeholder="Адрес: улица, дом, квартира" required>
-      <textarea name="problem" class="w-full p-3 rounded bg-slate-800" placeholder="Опишите проблему" required></textarea>
+  <input name="name"
+         class="w-full p-3 rounded bg-slate-800"
+         placeholder="Имя"
+         required>
 
-      <button type="submit"
-              class="w-full bg-green-500 hover:bg-green-600 p-4 rounded-xl font-semibold">
-        Отправить заявку
-      </button>
-    </form>
+  <input name="phone"
+         class="w-full p-3 rounded bg-slate-800"
+         placeholder="Телефон"
+         required>
+
+  <input name="address"
+         class="w-full p-3 rounded bg-slate-800"
+         placeholder="Адрес: улица, дом, квартира"
+         required>
+
+  <textarea name="problem"
+            class="w-full p-3 rounded bg-slate-800"
+            placeholder="Опишите проблему"
+            required></textarea>
+
+  <button type="submit"
+          class="w-full bg-green-500 hover:bg-green-600 p-4 rounded-xl font-semibold">
+    Отправить заявку
+  </button>
+</form>
+
   </div>
 </section>
 
@@ -139,3 +155,4 @@ form.addEventListener('submit', async (e) => {
 
 </body>
 </html>
+
