@@ -154,22 +154,17 @@
 </section>
 
 <!-- FORM -->
-<section id="form" class="py-20">
-  <div class="max-w-xl mx-auto px-6">
-    <h2 class="text-3xl font-bold mb-6">Вызвать мастера</h2>
+<form id="orderForm">
+  <input name="name" class="w-full p-3 rounded bg-slate-800" placeholder="Имя" required>
+  <input name="phone" class="w-full p-3 rounded bg-slate-800" placeholder="Телефон" required>
+  <input name="phone" class="w-full p-3 rounded bg-slate-800" placeholder="Адрес: улица, дом, квартира" required>
+  <textarea name="problem" class="w-full p-3 rounded bg-slate-800" placeholder="Опишите проблему" required></textarea>
 
-    <form class="space-y-4">
-      <input class="w-full p-3 rounded bg-slate-800" placeholder="Имя">
-      <input class="w-full p-3 rounded bg-slate-800" placeholder="Телефон">
-      <input class="w-full p-3 rounded bg-slate-800" placeholder="Адрес: улица, дом, квартира">
-      <textarea class="w-full p-3 rounded bg-slate-800" placeholder="Опишите проблему"></textarea>
+  <button type="submit" class="w-full bg-green-500 hover:bg-green-600 p-4 rounded-xl font-semibold">
+    Отправить заявку
+  </button>
+</form>
 
-      <button class="w-full bg-green-500 hover:bg-green-600 p-4 rounded-xl font-semibold">
-        Отправить заявку
-      </button>
-    </form>
-  </div>
-</section>
 
 <!-- MOBILE CALL -->
 <a href="tel:+79500702827"
@@ -178,5 +173,37 @@
 </a>
 
 </body>
+  <script>
+const form = document.getElementById('orderForm');
+
+form.addEventListener('submit', async function(e) {
+  e.preventDefault();
+
+  const name = this.name.value;
+  const phone = this.phone.value;
+  const problem = this.problem.value;
+
+  const token = '8583780709:AAEUJxsOEO9FhM30TSVu3OaH3oxxYsLgAJ8'; // вставь свой токен
+  const chat_id = '8583780709'; // вставь свой chat_id
+
+  const text = `📌 Новая заявка:\nИмя: ${name}\nТелефон: ${phone}\nПроблема: ${problem}`;
+
+  try {
+    await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({ chat_id, text })
+    });
+
+    alert('Заявка отправлена! Мастер свяжется с вами.');
+    form.reset();
+  } catch (err) {
+    alert('Ошибка при отправке заявки. Попробуйте позже.');
+    console.error(err);
+  }
+});
+</script>
+
 </html>
+
 
